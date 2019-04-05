@@ -3,15 +3,16 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.1.RELEASE'
     }
 }
 
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-version '1.0-SNAPSHOT'
+version 'SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -19,7 +20,18 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    
+    enabled = true
+}
+
+bootJar {
+    mainClassName = 'se.corestav.test.Application'
+}
+
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     
 }
